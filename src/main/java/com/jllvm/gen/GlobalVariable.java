@@ -17,6 +17,10 @@ public class GlobalVariable {
 	private ThreadLocalStorageModel threadLocal;
 	private Integer addressSpace;
 	private DataValue dataValue;
+	private String section;
+	private String partition;
+	private String comdat;
+	private Integer align;
 
 	@Override
 	public String toString() {
@@ -49,6 +53,22 @@ public class GlobalVariable {
 		sb.append("global ") //
 				.append(dataValue.getFirstClassType()) //
 				.append(dataValue.getValue());
+
+		if (section != null) {
+			sb.append(", section \"").append(section).append("\"");
+		}
+
+		if (partition != null) {
+			sb.append(", partition \"").append(partition).append("\"");
+		}
+
+		if (comdat != null) {
+			sb.append(", comdat \"").append(comdat).append("\"");
+		}
+
+		if (align != null) {
+			sb.append(", align ").append(align);
+		}
 
 		return sb.toString();
 	}
